@@ -6,7 +6,7 @@ interface SimpleButtonI {
 export const SimpleButton = ({ callback, title, danger = false }: SimpleButtonI) => {
     return (
         <a
-            className={`flex cursor-pointer text-white rounded-lg mt-5 px-5 py-2 hover:bg-opacity-80 ${!danger ? 'bg-slate-500' : 'bg-red-500'}`}
+            className={`flex cursor-pointer text-white rounded-lg px-5 py-2 hover:bg-opacity-80 ${!danger ? 'bg-slate-500' : 'bg-red-500'}`}
             onClick={async () => {
                 callback()
             }}

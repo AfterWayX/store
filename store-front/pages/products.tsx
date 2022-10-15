@@ -7,14 +7,16 @@ import { FilterFieldsI } from '../interfaces/FilterFields.interface';
 import { Filter } from '../components/Filter/Filter';
 import { ProductCard } from '../components/ProductCard/ProductCard';
 import { Header } from '../components/Header/Header';
+import { Pagination } from '../components/Pagination/Pagination';
 
 interface ProductsProps {
     results: Product[];
+    count: number;
     filterFields: FilterFieldsI;
     query: ProductsQuery;
 }
 
-const Products = ({results, filterFields, query}: ProductsProps) => {
+const Products = ({results, filterFields, count, query}: ProductsProps) => {
     return (
         <div className='min-h-screen min-w-screen bg-white text-black'>
         <Header />
@@ -27,6 +29,7 @@ const Products = ({results, filterFields, query}: ProductsProps) => {
                     ))
                 }
             </div>
+            <Pagination count={count} query={query} />
         </div>
         </div>
     )
@@ -45,7 +48,8 @@ export const getServerSideProps: GetServerSideProps = async (
       props: {
         query,
         filterFields: fRes.data,
-        results: res.data,
+        results: res.data.data,
+        count: res.data.count,
       },
     };
   };  

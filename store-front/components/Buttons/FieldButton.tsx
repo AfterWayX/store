@@ -17,7 +17,7 @@ export const FieldButton = ({ callback, title, field, active = false }: FieldBut
     )
     return (
         <a
-            className={`flex min-w-max text-sm font-medium p-1 ${activeState ? 'underline' : ''}`}
+            className={`flex min-w-max text-sm font-medium p-1 ${activeState ? 'underline font-bold' : ''}`}
             onClick={handleClick}
         >
                 { title }
