@@ -44,6 +44,7 @@ export const Filter = ({ fields }: FilterI) => {
         setCategory([])
         setColor([])
         setPrice([])
+        setIsOpened(false)
         await router.push('/products')
     }
 
