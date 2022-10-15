@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction, useEffect } from 'react';
-import { useState } from 'react';
-import { FilterFieldsI } from '../../interfaces/FilterFields.interface';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { isArray } from 'lodash';
 
+import { FilterFieldsI } from '../../interfaces/FilterFields.interface';
 import { SimpleButton } from '../Buttons/SimpleButton';
 import { FieldButton } from '../Buttons/FieldButton';
 import { RangeInput } from './RangeInput/RangeInput';
@@ -49,12 +49,12 @@ export const Filter = ({ fields }: FilterI) => {
 
     const applyFilter = async () => {
         const query = {
-            ...(price.length && {price: price}),
-            ...(category.length && {category: category}),
-            ...(color.length && {color: color}),
+            ...(price.length && { price: price }),
+            ...(category.length && { category: category }),
+            ...(color.length && { color: color }),
         }
         await router.push('/products', {
-            ...(Object.keys(query).length && {query: query}),
+            ...(Object.keys(query).length && { query: query }),
         }).finally(
             () => router.reload()
         )

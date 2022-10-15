@@ -1,11 +1,11 @@
-import { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from 'react';
+import React, { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { isArray } from 'lodash';
 
-interface RangeInputI { 
-    statement?: string[], 
+interface RangeInputI {
+    statement?: string[],
     callback: Dispatch<SetStateAction<string[]>>,
-    range: number[], 
+    range: number[],
 }
 export const RangeInput = ({ statement = ['0', '500'], callback, range }: RangeInputI) => {
     const [minValue, setMinValue] = useState(statement[0])

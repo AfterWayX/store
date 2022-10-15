@@ -1,8 +1,11 @@
+import React from 'react';
+
 interface SimpleButtonI {
     callback: () => void;
     title: string;
     danger?: boolean;
 }
+
 export const SimpleButton = ({ callback, title, danger = false }: SimpleButtonI) => {
     return (
         <a

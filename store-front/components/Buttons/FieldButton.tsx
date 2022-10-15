@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { statesType } from "../Filter/Filter";
+import React, { useState } from "react";
 interface FieldButtonI {
     callback: (
         data: string | number,
@@ -11,7 +10,7 @@ interface FieldButtonI {
 
 export const FieldButton = ({ callback, title, field, active = false }: FieldButtonI) => {
     const [activeState, setActive] = useState(active)
-    const handleClick = async ()=> (
+    const handleClick = async () => (
         setActive(!activeState),
         callback(title, field)
     )
@@ -20,7 +19,7 @@ export const FieldButton = ({ callback, title, field, active = false }: FieldBut
             className={`flex min-w-max text-sm font-medium p-1 ${activeState ? 'underline font-bold' : ''}`}
             onClick={handleClick}
         >
-                { title }
+            {title}
         </a >
     )
 }

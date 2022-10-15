@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { useEffect, useState } from 'react'
+import React ,{ useEffect, useState } from 'react'
 import Link from 'next/link';
 
 const Home: NextPage = () => {

@@ -1,6 +1,8 @@
+import React from "react";
 import Link from "next/link";
-import { ProductsQuery } from "../../interfaces/Query.interface";
 import Image from "next/future/image";
+
+import { ProductsQuery } from "../../interfaces/Query.interface";
 import { usePagination } from '../../hooks/usePagination';
 
 interface PaginationI {
@@ -12,11 +14,11 @@ export const Pagination = ({ count = 10, query }: PaginationI) => {
     const { limit = 10, skip = 0 } = query;
     const activePage = (skip / limit) + 1;
 
-    const pages = usePagination({totalCount: count, pageSize: limit, siblingCount: 1, currentPage: activePage+1})
+    const pages = usePagination({ totalCount: count, pageSize: limit, siblingCount: 1, currentPage: activePage })
     return (
         <div className="my-5 mx-auto">
             <ul className="flex gap-3">
-                <li  className={`my-auto mr-2 transition-all ${pages.length > 1 && activePage > 1 ? 'opacity-100 pointer-events-auto hover:opacity-70' : 'opacity-60 pointer-events-none'}`}>
+                <li className={`my-auto mr-2 transition-all ${pages.length > 1 && activePage > 1 ? 'opacity-100 pointer-events-auto hover:opacity-70' : 'opacity-60 pointer-events-none'}`}>
                     <Link
                         href={{
                             pathname: '/products',
@@ -35,11 +37,11 @@ export const Pagination = ({ count = 10, query }: PaginationI) => {
                     pages.map((page, index) => {
                         if (page === '...') {
                             return (
-                              <li key={`${page}_${index}`} className="text-16-22 ">
-                                &#8230;
-                              </li>
+                                <li key={`${page}_${index}`} className="text-16-22 ">
+                                    &#8230;
+                                </li>
                             );
-                          }                  
+                        }
                         return (
                             <li key={`${page}_${index}`} >
                                 <Link
@@ -57,13 +59,13 @@ export const Pagination = ({ count = 10, query }: PaginationI) => {
                         )
                     })
                 }
-                <li  className={`my-auto ml-2 rotate-180 transition-all ${pages.length > 1 && activePage < +pages[pages.length-1] ? 'opacity-100 pointer-events-auto hover:opacity-70' : 'opacity-60 pointer-events-none'}`}>
+                <li className={`my-auto ml-2 rotate-180 transition-all ${pages.length > 1 && activePage < +pages[pages.length - 1] ? 'opacity-100 pointer-events-auto hover:opacity-70' : 'opacity-60 pointer-events-none'}`}>
                     <Link
                         href={{
                             pathname: '/products',
                             query: {
                                 ...query,
-                                skip: ((+activePage + 1) * limit),
+                                skip: ((+activePage) * limit),
                             },
                         }}
                     >
